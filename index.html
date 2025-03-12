@@ -4,137 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10230 - Basics of Finance - Dr. Tsaban's Unofficial Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #2d3748;
+            line-height: 1.6;
         }
-        .container {
-            max-width: 1000px;
+        header {
+            background: #2d3748;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+            max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        nav a {
+            color: #edf2f7;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        nav a:hover {
+            opacity: 0.8;
+        }
+        .hero {
+            background: url('https://images.unsplash.com/photo-1551288049-b5f3a7a80fb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 64px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
             text-align: center;
+            color: white;
+            padding: 20px;
         }
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #2c3e50;
-            animation: fadeIn 1s ease-in;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
         }
         h2 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: #2c3e50;
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            margin: 10px;
-            background: #3498db;
+            display: block;
+            width: fit-content;
+            margin: 1.5rem auto;
+            padding: 12px 30px;
+            background: #2d3748;
             color: white;
             text-decoration: none;
             border-radius: 25px;
-            transition: transform 0.3s, background 0.3s;
+            font-weight: 500;
+            transition: transform 0.2s, background 0.2s;
         }
         .btn:hover {
-            transform: scale(1.05);
-            background: #2980b9;
+            transform: translateY(-2px);
+            background: #1a202c;
         }
         .big-btn {
-            padding: 15px 30px;
-            font-size: 1.2em;
-            background: #27ae60;
-        }
-        .big-btn:hover {
-            background: #219653;
+            font-size: 1.1rem;
+            padding: 15px 40px;
         }
         .small-btn {
-            padding: 8px 16px;
-            font-size: 0.9em;
-            background: #e74c3c;
-        }
-        .small-btn:hover {
-            background: #c0392b;
+            font-size: 0.9rem;
+            padding: 10px 25px;
         }
         .disabled-btn {
-            opacity: 0.6;
+            background: #718096;
             cursor: not-allowed;
         }
-        .section {
-            margin: 40px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            animation: slideUp 0.8s ease-out;
-        }
         .footer {
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #7f8c8d;
+            background: #2d3748;
+            color: #a0aec0;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
         }
-        p {
-            line-height: 1.6;
-            margin-bottom: 15px;
+        .footer a {
+            color: #cbd5e0;
+            text-decoration: underline;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            nav {
+                margin-top: 0.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>10230 - Basics of Finance - The Open University of Israel</h1>
-        <h2>(Dr. Tsaban's Unofficial Site)</h2>
-
-        <div class="section">
-            <h2>Welcome to the Course</h2>
-            <p>Welcome to this unofficial site, created by Dr. Shay Tsaban to enhance your learning experience for the course "10230 - Basics of Finance" at The Open University of Israel. This platform is designed for your convenience, providing a centralized location to access our course files. For general inquiries, please contact me at <a href="mailto:shay.tsaban@gmail.com">shay.tsaban@gmail.com</a>.</p>
+    <header>
+        <div class="header-content">
+            <div class="logo">10230 - Basics of Finance</div>
+            <nav>
+                <a href="#welcome">Welcome</a>
+                <a href="#materials">Materials</a>
+                <a href="#info">Information</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="section">
-            <h2>Course Materials</h2>
-            <p>The course materials that will be used during our lectures are available below. Download the latest version to get started:</p>
-            <a href="Lean coursebook - 10230 - 2025 B.docx" class="btn big-btn">Download Lean Coursebook 2025B</a>
-            <p>This site is unofficial and supplementary to the official course platform, aiming to support your studies effectively.</p>
-        </div>
-
-        <div class="section">
-            <h2>Important Information</h2>
-            <p>All questions regarding assignments listed on the official course site</p>
-            <a href="https://sheilta.apps.openu.ac.il/pls/myopr/booklet.viewbook?p_semester=2025b&p_kurs=10230" target="_blank" class="btn small-btn disabled-btn">Official Site (Registered Students Only)</a>
-            <p>should be addressed exclusively in our specific forum on the official site</p>
-            <a href="https://opal.openu.ac.il/mod/ouilforum/index.php?id=52709&quicklinks=1" target="_blank" class="btn small-btn disabled-btn">Forum (Registered Users Only)</a>
-            <p>Stay tuned for more information and content. Questions about our notebook will be handled here on this site in the future (a forum will be added later). Please ensure you copy the question and include a clear header (e.g., 'Chapter 1 - Question') to receive a response.</p>
-        </div>
-
-        <div class="footer">
-            <p>Need the previous semester’s coursebook? Click below:<br>
-            <a href="Lean coursebook - 10230 - 2025 A.docx" class="btn small-btn">Download Lean Coursebook 2025A</a></p>
-            <p>Best wishes for your studies! This site will be updated with additional resources as needed. - Dr. Shay Tsaban</p>
-            <p>Email: <a href="mailto:shay.tsaban@gmail.com">shay.tsaban@gmail.com</a></p>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>10230 - Basics of Finance</h1>
+            <h2>The Open University of Israel<br>(Dr. Tsaban's Unofficial Site)</h2>
         </div>
     </div>
 
-    <script>
-        // Scroll animation for sections
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.section').forEach(section => {
-                const top = section.getBoundingClientRect().top;
-                if (top < window.innerHeight - 100) {
-                    section.style.opacity = '1';
-                    section.style.transform = 'translateY(0)';
-                }
-            });
-        });
-    </script>
+    <div class="container">
+        <section class="section" id="welcome">
+            <h2>📘 Welcome to the Course</h2>
+            <p>Welcome to this unofficial site, created by Dr. Shay Tsaban to enhance your learning experience for the course "10230 - Basics of Finance" at The Open University of Israel. This platform is designed for your convenience, providing a centralized location to access our course files. For general inquiries, please contact me at <a href="mailto:shay.tsaban@gmail.com">shay.tsaban@gmail.com</a>.</p>
+        </section>
+
+        <section class="section" id="materials">
+            <h2>📝 Course Materials</h2>
+            <p>The course materials that will be used during our lectures are available below. Download the latest version to get started:</p>
+            <a href="Lean coursebook - 10230 - 2025 B.docx" class="btn big-btn">Download Lean Coursebook 2025B</a>
+            <p>This site is unofficial and supplementary to the official course platform, aiming to support your studies effectively.</p>
+        </section>
+
+        <section class="section" id="info">
+            <h2>💰 Important Information</h2>
+            <p>All questions regarding assignments listed on the official course site</p>
+            <a href="https://sheilta.apps.openu.ac.il/pls/myopr/booklet.viewbook?p_semester=2025b&p_kurs=10230" 
+               target="_blank" 
+               class="btn small-btn disabled-btn">Official Site (Registered Students Only)</a>
+            <p>should be addressed exclusively in our specific forum on the official site</p>
+            <a href="https://opal.openu.ac.il/mod/ouilforum/index.php?id=52709&quicklinks=1" 
+               target="_blank" 
+               class="btn small-btn disabled-btn">Forum (Registered Users Only)</a>
+            <p>Stay tuned for more information and content. Questions about our notebook will be handled here on this site in the future (a forum will be added later). Please ensure you copy the question and include a clear header (e.g., "Chapter 1 - Question") to receive a response.</p>
+        </section>
+    </div>
+
+    <div class="footer">
+        <p>Need the previous semester’s coursebook? Click below:<br>
+        <a href="Lean coursebook - 10230 - 2025 A.docx" class="btn small-btn">Download Lean Coursebook 2025A</a></p>
+        <p style="margin-top: 1.5rem;">Best wishes for your studies! 🎓<br>This site will be updated with additional resources as needed.<br>- Dr. Shay Tsaban</p>
+        <p style="margin-top: 1rem;">Email: <a href="mailto:shay.tsaban@gmail.com">shay.tsaban@gmail.com</a></p>
+    </div>
 </body>
 </html>
