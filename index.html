@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10230 - Basics of Finance - Dr. Tsaban's Unofficial Site</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-transform: uppercase;
+        }
+        nav {
+            background: #34495e;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: #ecf0f1;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #e74c3c;
+        }
+        .chapter {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: slideUp 1s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .chapter h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        button {
+            background: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 5px;
+        }
+        button:hover {
+            background: #e74c3c;
+        }
+        .small-button {
+            padding: 5px 10px;
+            font-size: 0.9em;
+        }
+        #forum {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+        }
+        #questionForm {
+            display: flex;
+            flex-direction: column;
+        }
+        #questionForm input, #questionForm textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #questionForm button {
+            width: 200px;
+            align-self: center;
+        }
+        #questionsList {
+            list-style: none;
+            padding: 0;
+        }
+        #questionsList li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #2c3e50;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>10230 - Basics of Finance - The Open University of Israel</h1>
+        <p>(Dr. Tsaban's Unofficial Site)</p>
+    </header>
+    <nav>
+        <a href="#chapter1">Chapter 1</a>
+        <a href="#chapter2">Chapter 2</a>
+        <a href="#chapter3">Chapter 3</a>
+        <a href="#forum">Forum</a>
+        <a href="#resources">Resources</a>
+    </nav>
+    <div class="chapter" id="chapter1">
+        <h2>Chapter 1: Introduction to Financial Markets</h2>
+        <p>Welcome to the basics of finance! This chapter covers the structure of financial markets, key players, and the role of interest rates. Dive into the coursebook for detailed examples.</p>
+    </div>
+    <div class="chapter" id="chapter2">
+        <h2>Chapter 2: Investment and Risk Management</h2>
+        <p>Learn about portfolio diversification, risk assessment, and the trade-offs between return and risk. Practice problems are included in the coursebook to solidify your understanding.</p>
+    </div>
+    <div class="chapter" id="chapter3">
+        <h2>Chapter 3: Corporate Finance Fundamentals</h2>
+        <p>Explore how companies raise capital, the cost of capital, and financial decision-making. Additional resources are provided to deepen your knowledge.</p>
+    </div>
+    <div id="resources">
+        <h2>Course Materials</h2>
+        <p>The course materials that will be used during our lectures are enclosed. Download the latest coursebook:</p>
+        <button onclick="window.location.href='Lean coursebook - 10230 - 2025 B.docx'">Lean Coursebook 2025B</button>
+        <p>Want the previous semester coursebook? Click here:</p>
+        <button class="small-button" onclick="window.location.href='Lean coursebook - 10230 - 2025 A.docx'">Lean Coursebook 2025A</button>
+    </div>
+    <div id="forum">
+        <h2>Forum for Questions</h2>
+        <p>Questions regarding our notebook will only be asked here. Please copy the question, include a clear header (e.g., "Chapter 2 - Risk Question"), otherwise, it won’t be answered.</p>
+        <form id="questionForm">
+            <input type="text" id="questionHeader" placeholder="Header (e.g., Chapter 1 - Question)" required>
+            <textarea id="questionText" placeholder="Your question here..." rows="4" required></textarea>
+            <button type="submit">Submit Question</button>
+        </form>
+        <h3>Submitted Questions</h3>
+        <ul id="questionsList"></ul>
+    </div>
+    <footer>
+        <p>This is an unofficial site created by Dr. Shay Tsaban (email: shay.tsaban@gmail.com) for your convenience and to store our files. All questions regarding assignments on the official course site (<a href="https://sheilta.apps.openu.ac.il/pls/myopr/booklet.viewbook?p_semester=2025b&p_kurs=10230" target="_blank"><button class="small-button" disabled>Official Site (Registered Students Only)</button></a>) should be addressed in our specific forum on the official site (<a href="https://opal.openu.ac.il/mod/ouilforum/index.php?id=52709&quicklinks=1" target="_blank"><button class="small-button" disabled>Forum (Registered Users Only)</button></a>).</p>
+        <p>Explore more: <button onclick="alert('Stay tuned for quizzes and updates!')">Fun Quiz</button></p>
+    </footer>
+
+    <script>
+        document.getElementById('questionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const header = document.getElementById('questionHeader').value;
+            const text = document.getElementById('questionText').value;
+            if (!header.includes('Chapter') || !text) {
+                alert('Please include a valid header (e.g., "Chapter 1 - Question") and a detailed question.');
+                return;
+            }
+            const li = document.createElement('li');
+            li.textContent = `${header}: ${text}`;
+            document.getElementById('questionsList').appendChild(li);
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
