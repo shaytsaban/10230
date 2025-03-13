@@ -1,423 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>10230 - Basics of Finance - Dr. Tsaban's Unofficial Site</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary-color: #2e86de;
-      --secondary-color: #54a0ff;
-      --accent-color: #ff6b6b;
-      --dark-color: #222f3e;
-      --light-color: #f5f6fa;
-      --success-color: #10ac84;
-      --warning-color: #ff9f43;
-      --gradient-primary: linear-gradient(135deg, #2e86de, #54a0ff);
-      --gradient-secondary: linear-gradient(135deg, #ff6b6b, #ff9f43);
-      --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
-      --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
-      --border-radius: 12px;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--light-color);
-      color: #2d3748;
-      line-height: 1.7;
-    }
-    
-    header {
-      background: var(--gradient-primary);
-      color: #fff;
-      padding: 1.2rem 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-shadow: var(--shadow-md);
-    }
-    
-    .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 30px;
-    }
-    
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      letter-spacing: 0.5px;
-    }
-    
-    nav {
-      display: flex;
-      gap: 15px;
-    }
-    
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 16px;
-      font-weight: 500;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-    }
-    
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-    
-    .hero {
-      background: url('https://images.unsplash.com/photo-1551288049-b5f3a7a80fb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 76px;
-      position: relative;
-      border-bottom: 5px solid var(--secondary-color);
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: white;
-      padding: 30px;
-      max-width: 800px;
-    }
-    
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    
-    h2 {
-      font-size: 1.6rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-    }
-    
-    .container {
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 30px;
-    }
-    
-    .section {
-      background: white;
-      border-radius: var(--border-radius);
-      padding: 2.5rem;
-      margin: 2.5rem 0;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-top: 5px solid transparent;
-    }
-    
-    .section:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    #welcome {
-      border-top-color: var(--primary-color);
-    }
-    
-    #materials {
-      border-top-color: var(--success-color);
-    }
-    
-    #info {
-      border-top-color: var(--warning-color);
-    }
-    
-    /* New section guidance styling */
-    #guidance {
-      border-top-color: var(--accent-color);
-    }
-    
-    .section h2 {
-      color: var(--dark-color);
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-      border-bottom: 2px solid #f0f0f0;
-      padding-bottom: 0.8rem;
-    }
-    
-    .section p {
-      margin-bottom: 1.5rem;
-      color: #4a5568;
-    }
-    
-    .section a:not(.btn) {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px dotted var(--primary-color);
-      transition: color 0.3s ease;
-    }
-    
-    .section a:not(.btn):hover {
-      color: var(--secondary-color);
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: 14px 32px;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      text-align: center;
-      letter-spacing: 0.5px;
-      box-shadow: var(--shadow-sm);
-      margin: 1.2rem 0;
-    }
-    
-    .big-btn {
-      font-size: 1.1rem;
-      padding: 16px 45px;
-      background: var(--gradient-primary);
-      color: white;
-    }
-    
-    .big-btn:hover {
-      background: linear-gradient(135deg, #54a0ff, #2e86de);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-3px);
-    }
-    
-    .small-btn {
-      font-size: 0.9rem;
-      padding: 12px 28px;
-      background: white;
-      color: var(--primary-color);
-      border: 2px solid var(--primary-color);
-    }
-    
-    .small-btn:hover {
-      background: var(--primary-color);
-      color: white;
-      transform: translateY(-2px);
-    }
-    
-    .disabled-btn {
-      background: #e2e8f0;
-      color: #718096;
-      cursor: not-allowed;
-      border: 2px solid #e2e8f0;
-    }
-    
-    .disabled-btn:hover {
-      background: #e2e8f0;
-      color: #718096;
-      transform: none;
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .btn-container {
-      display: flex;
-      justify-content: center;
-      margin: 1.5rem 0;
-    }
-    
-    .footer {
-      background: var(--dark-color);
-      color: #cbd5e0;
-      padding: 3rem 2rem;
-      text-align: center;
-      margin-top: 5rem;
-      border-top: 5px solid var(--primary-color);
-    }
-    
-    .footer-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .footer a:not(.btn) {
-      color: var(--secondary-color);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    
-    .footer a:not(.btn):hover {
-      color: white;
-    }
-    
-    .footer .btn {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      margin: 1rem 0;
-    }
-    
-    .footer .btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    
-    .highlight {
-      background: #fefcbf;
-      padding: 1rem;
-      border-radius: var(--border-radius);
-      margin: 1.5rem 0;
-      border-left: 4px solid var(--warning-color);
-    }
-    
-    /* Visitor counter styling */
-    .visitor-counter {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-        padding: 10px 20px;
-      }
-      
-      nav {
-        margin-top: 0.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      nav a {
-        margin: 5px;
-      }
-      
-      h1 {
-        font-size: 2rem;
-      }
-      
-      h2 {
-        font-size: 1.4rem;
-      }
-      
-      .hero {
-        height: 300px;
-        margin-top: 110px;
-      }
-      
-      .section {
-        padding: 1.8rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Accounting A - Yezreel Valley College 📚</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            margin: -30px -30px 30px -30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .btn {
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .highlight-btn {
+            padding: 25px;
+            font-size: 1.8em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f1c40f, #f39c12);
+            border: 3px solid #e67e22;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(241, 196, 15, 0.7);
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .highlight-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(241, 196, 15, 0.9);
+        }
+        .category {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            transition: background 0.3s;
+        }
+        .category:hover {
+            background: #dfe6e9;
+        }
+        .lecturer-info {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .counter {
+            text-align: center;
+            padding: 15px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            animation: fadeIn 1s ease-in;
+        }
+        .excel-note {
+            margin: 15px 0;
+            font-style: italic;
+            color: #2c3e50;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <div class="logo">10230 - Basics of Finance</div>
-      <nav>
-        <a href="#welcome">Welcome</a>
-        <a href="#materials">Materials</a>
-        <a href="#info">Information</a>
-        <a href="#guidance">Guidance</a>
-      </nav>
+    <div class="container">
+        <header>
+            <h1>Financial Accounting A 📊</h1>
+            <p>Yezreel Valley College 🏫</p>
+        </header>
+
+        <div class="excel-note">
+            This is the concentrated Excel containing the course notes. It will be updated after each lecture. Enjoy! 📈
+        </div>
+        <a href="https://github.com/shaytsaban/YVCFinAccA/raw/main/Course%20Notes%20-%20YVC%20Fin%20A%20-%202025%20B.xlsx" class="btn highlight-btn">Course Notes (Excel) 📊</a>
+
+        <div class="button-grid">
+            <a href="https://github.com/shaytsaban/YVCFinAccA/raw/main/Financial%20Accounting%20A%20-%20Syllabus.pdf" class="btn">Syllabus 📜</a>
+            <button class="btn" style="background: #e67e22" onclick="alert('Stay tuned!')">
+                Assignments (Stay tuned) ✍️
+            </button>
+            <button class="btn" style="background: #9b59b6" onclick="alert('Stay tuned!')">
+                Grades (Stay tuned) ⭐
+            </button>
+            <button class="btn" style="background: #e74c3c" onclick="alert('Stay tuned!')">
+                Resources (Stay tuned) 📚
+            </button>
+        </div>
+
+        <div class="category">
+            <h2>Course Overview 🔍</h2>
+            <p>Welcome to Financial Accounting A! Led by the brilliant Dr. Shay Tsaban, this course offers an exceptional journey into the world of accounting. Prepare to master the essentials with an inspiring and dedicated teacher! 💰</p>
+        </div>
+
+        <div class="category">
+            <h2>Key Topics (From Syllabus) 📋</h2>
+            <ul>
+                <li>IAS 16 - Property, Plant and Equipment 🏢</li>
+                <li>IAS 36 - Impairment of Assets 📉</li>
+                <li>IAS 8 - Accounting Policies, Changes in Estimates and Errors ⚙️</li>
+                <li>IAS 10 - Events After the Reporting Period ⏳</li>
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2>Recordings 🎥</h2>
+            <p>Stay tuned for lecture recordings! Coming soon to enhance your learning experience.</p>
+        </div>
+
+        <div class="lecturer-info">
+            <h2>Lecturer 👨‍🏫</h2>
+            <p>Dr. Shay Tsaban - An extraordinary educator and expert in financial accounting!</p>
+            <p>Email: <a href="mailto:shay.tsaban@gmail.com" style="color: #fff; text-decoration: underline;">shay.tsaban@gmail.com</a> ✉️</p>
+        </div>
+
+        <div class="counter">
+            <p>Visitors: <span id="visitCount">0</span> 👀</p>
+        </div>
     </div>
-  </header>
 
-  <div class="hero">
-    <div class="hero-content">
-      <h1>10230 - Basics of Finance</h1>
-      <h2>The Open University of Israel</h2>
-      <p>Dr. Tsaban's Unofficial Course Resource</p>
-    </div>
-  </div>
+    <footer>
+        <p>© 2025 Yezreel Valley College | Financial Accounting A | Last Updated: March 13, 2025 🕒</p>
+    </footer>
 
-  <div class="container">
-    <section class="section" id="welcome">
-      <h2>📘 Welcome to the Course</h2>
-      <p>Welcome to this unofficial site, created by Dr. Shay Tsaban to enhance your learning experience for the course "10230 - Basics of Finance" at The Open University of Israel. This platform is designed for your convenience, providing a centralized location to access our course files.</p>
-      <p>For general inquiries, please contact me at <a href="mailto:shay.tsaban@gmail.com">shay.tsaban@gmail.com</a>.</p>
-    </section>
+    <script>
+        // Improved visit counter with session handling
+        function updateVisitCount() {
+            let visits = parseInt(sessionStorage.getItem('visitCount')) || 0;
+            if (!sessionStorage.getItem('visited')) {
+                visits++;
+                sessionStorage.setItem('visitCount', visits);
+                sessionStorage.setItem('visited', 'true');
+            }
+            document.getElementById('visitCount').textContent = visits;
+        }
 
-    <section class="section" id="materials">
-      <h2>📝 Course Materials</h2>
-      <p>The course materials that will be used during our lectures are available below. Download the latest version to get started:</p>
-      <div class="btn-container">
-        <a href="Lean coursebook - 10230 - 2025 B.docx" class="btn big-btn">Download Lean Coursebook 2025B</a>
-      </div>
-      <div class="highlight">
-        <p><strong>Note:</strong> This site is unofficial and supplementary to the official course platform, aiming to support your studies effectively.</p>
-      </div>
-    </section>
+        // Reset visited flag on page unload to count new sessions
+        window.addEventListener('unload', () => {
+            sessionStorage.removeItem('visited');
+        });
 
-    <section class="section" id="info">
-      <h2>💰 Important Information</h2>
-      <p>All questions regarding assignments listed on the official course site:</p>
-      <div class="btn-container">
-        <a href="https://sheilta.apps.openu.ac.il/pls/myopr/booklet.viewbook?p_semester=2025b&p_kurs=10230" target="_blank" class="btn small-btn disabled-btn">Official Site (Registered Students Only)</a>
-      </div>
-      <p>should be addressed exclusively in our specific forum on the official site:</p>
-      <div class="btn-container">
-        <a href="https://opal.openu.ac.il/mod/ouilforum/index.php?id=52709&quicklinks=1" target="_blank" class="btn small-btn disabled-btn">Forum (Registered Users Only)</a>
-      </div>
-      <p>Stay tuned for more information and content. Questions about our notebook will be handled here on this site in the future (a forum will be added later).</p>
-      <div class="highlight">
-        <p><strong>Important:</strong> Please ensure you copy the question and include a clear header (e.g., "Chapter 1 - Question") to receive a response.</p>
-      </div>
-    </section>
+        // Update counter on page load
+        window.onload = updateVisitCount;
 
-    <!-- New Guidance Section -->
-    <section class="section" id="guidance">
-      <h2>🗒 Specific Guidance After Course Meetings</h2>
-      <h3>Guidance after Meeting 1, 12.3.2025 - Basics of FV Calculations</h3>
-      <p>In this meeting, we discussed the concept of future value, covering both lump sum (single deposit) and annuity (series of payments). We started with the basics and gradually advanced towards mastering FV calculations.</p>
-      <p>Following the meeting, if you feel confident, review all material up to page 40 of the notebook. Should you have extra time, focus specifically on unit 5 in the course site, targeting FV calculations. However, if you find yourself needing additional support, please review both FV and PV sections in unit 5 to build a stronger foundation for the next lecture. Remember – work hard, as winter is coming!</p>
-    </section>
-  </div>
-
-  <div class="footer">
-    <div class="footer-content">
-      <p>Need the previous semester's coursebook?</p>
-      <a href="Lean coursebook - 10230 - 2025 A.docx" class="btn">Download Lean Coursebook 2025A</a>
-      
-      <!-- Visitor Counter using SeeYouFarm -->
-      <div class="visitor-counter">
-        <p>Visitor Count: Today / Total</p>
-        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://shaytsaban.github.io/10230/&count_bg=%2379C83D&title_bg=%23555555&icon=&edge_flat=false" 
-             alt="Visitor Count" />
-      </div>
-      
-      <p style="margin-top: 2rem;">Best wishes for your studies! 🎓</p>
-      <p>This site will be updated with additional resources as needed.</p>
-      <p style="margin-top: 1rem; font-weight: 500;">- Dr. Shay Tsaban</p>
-      <p style="margin-top: 1.5rem;">Contact: <a href="mailto:shay.tsaban@gmail.com">shay.tsaban@gmail.com</a></p>
-    </div>
-  </div>
+        // Button click animations
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    btn.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+    </script>
 </body>
 </html>
